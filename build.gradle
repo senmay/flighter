@@ -1,0 +1,65 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+
+group = 'com.kodilla'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // AOP
+    compile('org.springframework.boot:spring-boot-starter-aop')
+
+    //LOCAL DATABASE
+    runtimeOnly 'mysql:mysql-connector-java'
+
+    //TEST DATABASE
+    testRuntime('com.h2database:h2')
+
+    //EMAIL
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+    //GOOGLE GSON
+    compile('com.google.code.gson:gson:2.8.2')
+
+    //ACTUATOR
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    //LOMBOK
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    //SWAGGER
+    compile('io.springfox:springfox-swagger2:2.7.0')
+    compile('io.springfox:springfox-swagger-ui:2.7.0')
+
+    //THYMELEAF
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+
+}
